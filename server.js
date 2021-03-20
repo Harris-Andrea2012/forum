@@ -24,7 +24,7 @@ const comment = require("./mongoose/comment");
 
 /**MULTER */
 const imageStorage = multer.diskStorage({
-  destination: "./client/forum/public/uploads",
+  destination: "./build/uploads",
   filename: (req, file, cb) => {
     cb(
       null,
@@ -110,9 +110,7 @@ app.post("/auth", async (req, res) => {
           };
         } else {
           const filePath = path.join(
-            __dirname +
-              "/client/forum/public/uploads/" +
-              user.profilePic.filename
+            __dirname + "/build/uploads/" + user.profilePic.filename
           );
 
           try {
@@ -180,7 +178,7 @@ app.post("/delAcct", async (req, res) => {
 
 app.get("/logout/removeFiles", (req, res) => {
   const filePath = path.join(
-    __dirname + "/client/forum/public/uploads/" + req.session.user.img
+    __dirname + "/build/uploads/" + req.session.user.img
   );
   fs.stat(filePath, (err, stat) => {
     if (err == null) {
@@ -294,7 +292,7 @@ app.post(
       message = "Incorrect credentials. Please try again.";
 
       filePath = path.join(
-        __dirname + "/client/forum/public/uploads/" + req.file.filename
+        __dirname + "/build/uploads/" + req.file.filename
       );
 
       try {
