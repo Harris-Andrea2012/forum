@@ -291,9 +291,7 @@ app.post(
       status = 404;
       message = "Incorrect credentials. Please try again.";
 
-      filePath = path.join(
-        __dirname + "/build/uploads/" + req.file.filename
-      );
+      filePath = path.join(__dirname + "/build/uploads/" + req.file.filename);
 
       try {
         fs.unlinkSync(filePath);
@@ -303,7 +301,7 @@ app.post(
     } else {
       if (found.profilePic !== null) {
         filePath = path.join(
-          __dirname + "/client/forum/public/uploads/" + req.session.user.img
+          __dirname + "/build/uploads/" + req.session.user.img
         );
         try {
           fs.unlinkSync(filePath);
@@ -311,9 +309,7 @@ app.post(
           console.log("THERE WAS AN ERROR", error.message);
         }
       }
-      filePath = path.join(
-        __dirname + "/client/forum/public/uploads/" + req.file.filename
-      );
+      filePath = path.join(__dirname + "/build/uploads/" + req.file.filename);
 
       found.profilePic = {
         filename: req.file.filename,
