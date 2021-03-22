@@ -221,13 +221,13 @@ app.get("/confirmAuth", async (req, res) => {
   if (req.session.user) {
     status = 200;
     message = req.session.user;
+    console.log(req.session.user.userName + " IS LOGGED IN");
   } else {
     status = 404;
     message = "Session expired.";
   }
   res.status(status).send({ message: message });
 });
-
 app.post("/updateProfile", async (req, res) => {
   let status;
   let message;
