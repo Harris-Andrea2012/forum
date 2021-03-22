@@ -571,7 +571,9 @@ app.post("/addToDiscourse", async (req, res) => {
 });
 
 app.get("/getProfile", async (req, res) => {
-  let status, message, userBookClub, memberForums;
+  let status, message
+  let userBookClub = [];
+  let memberForums = [];
 
   const currentUser = req.session.user;
    
