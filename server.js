@@ -574,6 +574,8 @@ app.get("/getProfile", async (req, res) => {
   let status, message, userBookClub, memberForums;
 
   const currentUser = req.session.user;
+    console.log("current user is ", currentUser);
+
 
   userBookClub = await BookClub.where({
     host: mongoose.Types.ObjectId(currentUser.id),
