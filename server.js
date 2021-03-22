@@ -221,7 +221,7 @@ app.get("/confirmAuth", async (req, res) => {
   if (req.session.user) {
     status = 200;
     message = req.session.user;
-    console.log(req.session.user.userName + " IS LOGGED IN");
+    
   } else {
     status = 404;
     message = "Session expired.";
@@ -574,7 +574,7 @@ app.get("/getProfile", async (req, res) => {
   let status, message, userBookClub, memberForums;
 
   const currentUser = req.session.user;
-    console.log("current user is ", currentUser);
+   
 
 
   userBookClub = await BookClub.where({
